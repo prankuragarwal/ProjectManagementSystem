@@ -55,8 +55,10 @@ public class LoginPage extends javax.swing.JFrame {
         jComboBox = new javax.swing.JComboBox<>();
         jBtnSubmit = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Login");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Username:");
@@ -87,18 +89,23 @@ public class LoginPage extends javax.swing.JFrame {
         });
         getContentPane().add(jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 116, -1, -1));
 
+        jBtnSubmit.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jBtnSubmit.setText("Login");
         jBtnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnSubmitActionPerformed(evt);
             }
         });
-        getContentPane().add(jBtnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 175, -1, -1));
+        getContentPane().add(jBtnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 168, -1, 30));
 
         jLabel3.setText("Type:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 119, -1, -1));
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projectmanagementsystem/loginb.jpg"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 210));
+
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTxtFieldUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtFieldUsernameActionPerformed
@@ -266,6 +273,7 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JTextField jTxtFieldUsername;
     // End of variables declaration//GEN-END:variables
