@@ -5,6 +5,11 @@
  */
 package projectmanagementsystem;
 
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author prank
@@ -21,7 +26,7 @@ public class Student extends javax.swing.JFrame {
      public Student(String para)
     {
         initComponents();
-        jTextField1.setText(para);
+        tf1.setText(para);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,31 +39,40 @@ public class Student extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jlist1 = new javax.swing.JList<>();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tf1 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("View Groups");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.setEnabled(false);
-        jScrollPane1.setViewportView(jList1);
+        jlist1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jlist1.setEnabled(false);
+        jScrollPane1.setViewportView(jlist1);
 
         jButton2.setText("Edit Project");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Back");
 
         jLabel1.setText("StudentId");
 
-        jTextField1.setText("jTextField1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        tf1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                tf1ActionPerformed(evt);
             }
         });
 
@@ -91,7 +105,7 @@ public class Student extends javax.swing.JFrame {
                                 .addGap(25, 25, 25)
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(tf1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -101,7 +115,7 @@ public class Student extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -124,9 +138,86 @@ public class Student extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void tf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_tf1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try
+{
+   
+String name = tf1.getText();
+Class.forName("com.mysql.jdbc.Driver");
+java.sql.Connection con=null;
+con = DriverManager.getConnection("jdbc:mysql://localhost/ProjectManagementSystem","root","bubu");
+String query1 ="SELECT subject from Teachers where username ='"+name+"';";
+Statement st1 = con.createStatement();
+ResultSet rs1 = st1.executeQuery(query1);
+rs1.next();
+String sub = rs1.getString("subject");
+String stat = "Complete";
+String query = "SELECT * from Projects where Subject= '"+sub+"' and Status='"+stat+"';";
+Statement st2 = con.createStatement();
+ResultSet rs2 = st2.executeQuery(query);
+DefaultListModel listModel;
+listModel = new DefaultListModel();
+//JList jlist1 = new JList(listModel);
+int i=0;
+String[] arr = new String[100]; 
+while(rs2.next())
+{
+    
+        String id = rs2.getString("ProjectId");
+        //String nam = rs2.getString("Name");
+        String ele = id;
+        listModel.addElement(ele);
+       
+        arr[i]=ele;
+        
+        i++;
+        
+        
+
+               
+    
+}
+ jlist1.setModel(listModel);
+//System.out.println(arr[0]);
+//int k = 0;
+//while ( arr[k]!="/0")
+//{
+  //  listModel.addElement((String)arr[k]);
+    //k++;
+//}
+//jlist1.setModel(listModel);
+
+
+
+
+   
+    
+        
+
+jlist1.setModel(listModel);
+
+// TODO add your handling code here:
+}
+catch(Exception e)
+{
+                       System.out.println(e.getMessage());
+
+    
+}
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        EditProject EP = new EditProject();
+        
+        EP.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,8 +260,8 @@ public class Student extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JList<String> jlist1;
+    private javax.swing.JTextField tf1;
     // End of variables declaration//GEN-END:variables
 }
