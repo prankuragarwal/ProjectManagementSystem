@@ -6,9 +6,12 @@
 package projectmanagementsystem;
 
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import static projectmanagementsystem.Query.displayMessage;
 
 /**
  *
@@ -77,6 +80,11 @@ public class Student extends javax.swing.JFrame {
         });
 
         jButton4.setText("View Grade");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,7 +159,7 @@ String name = tf1.getText();
 Class.forName("com.mysql.jdbc.Driver");
 java.sql.Connection con=null;
 con = DriverManager.getConnection("jdbc:mysql://localhost/ProjectManagementSystem","root","bubu");
-String query1 ="SELECT subject from Teachers where username ='"+name+"';";
+String query1 ="SELECT subject from Students where username ='"+name+"';";
 Statement st1 = con.createStatement();
 ResultSet rs1 = st1.executeQuery(query1);
 rs1.next();
@@ -218,6 +226,29 @@ catch(Exception e)
         
         EP.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+  try{ 
+       int a = Integer.parseInt(tf1.getText());
+     String str = jlist1.getSelectedValue().toString();
+      Class.forName("com.mysql.jdbc.Driver");
+java.sql.Connection con=null;
+con = DriverManager.getConnection("jdbc:mysql://localhost/ProjectManagementSystem","root","bubu");
+String q1  = "select grade from Projects where ProjectId='"+str+"';";
+
+Statement st2 = con.createStatement();
+ResultSet rs2 = st2.executeQuery(q1);
+rs2.next();
+String g = rs2.getString("grade");
+JOptionPane.showMessageDialog(this, "Grade of the selected project is " + g);
+     //System.out.println(a);
+   // TODO add your handling code here:
+    }                                        
+        catch(Exception e)
+    {
+        System.out.println(e);
+    }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
