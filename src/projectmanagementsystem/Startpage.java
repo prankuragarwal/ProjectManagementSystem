@@ -44,10 +44,10 @@ public class Startpage extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 110, 60));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 590, 120, 70));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\prank\\Desktop\\startbg.jpg")); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 520));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projectmanagementsystem/startb.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 680));
 
         pack();
         setLocationRelativeTo(null);

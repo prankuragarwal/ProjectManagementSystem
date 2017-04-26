@@ -61,25 +61,27 @@ public class LoginPage extends javax.swing.JFrame {
         setTitle("Login");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("Username:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 41, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, 120, 40));
 
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setText("Password:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 79, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, -1, -1));
 
         jTxtFieldUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtFieldUsernameActionPerformed(evt);
             }
         });
-        getContentPane().add(jTxtFieldUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 38, 134, -1));
+        getContentPane().add(jTxtFieldUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 190, 50));
 
         jPasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldActionPerformed(evt);
             }
         });
-        getContentPane().add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 76, 134, -1));
+        getContentPane().add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 190, 40));
 
         jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose an Option", "Student", "Teacher", "Group" }));
         jComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +89,7 @@ public class LoginPage extends javax.swing.JFrame {
                 jComboBoxActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 116, -1, -1));
+        getContentPane().add(jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 190, 40));
 
         jBtnSubmit.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jBtnSubmit.setText("Login");
@@ -96,13 +98,14 @@ public class LoginPage extends javax.swing.JFrame {
                 jBtnSubmitActionPerformed(evt);
             }
         });
-        getContentPane().add(jBtnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 168, -1, 30));
+        getContentPane().add(jBtnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, 80, 50));
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setText("Type:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 119, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, -1, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projectmanagementsystem/loginb.jpg"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 210));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projectmanagementsystem/all.jpg"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 680));
 
         pack();
         setLocationRelativeTo(null);
